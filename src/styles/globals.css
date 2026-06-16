@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/*
+  Plzeňské Instalace — design tokens
+  Theme: LIGHT ONLY (brand-mandated white / grey / blue, orange single accent).
+  Primary  = blue  #1d4ed8
+  Accent   = orange #f97316  (the only accent on the page)
+  Display  = Space Grotesk · Body = Manrope
+*/
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* Neutrals — single cool-grey family */
+  --color-ink: #0b1220;
+  --color-ink-soft: #334155;
+  --color-muted: #64748b;
+  --color-line: #e6e9ef;
+  --color-surface: #ffffff;
+  --color-surface-2: #f6f8fb;
+
+  /* Brand */
+  --color-brand: #1d4ed8;
+  --color-brand-700: #1e40af;
+  --color-brand-50: #eff4ff;
+  --color-accent: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-50: #fff5ec;
+
+  --radius-card: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+
+  /* Visible, brand-tinted focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
