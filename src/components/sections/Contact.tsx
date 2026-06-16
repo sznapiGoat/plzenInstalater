@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { Phone, EnvelopeSimple, MapPin, Clock, CheckCircle } from '@phosphor-icons/react'
-import { company } from '@/data/site'
+import { Phone, EnvelopeSimple, MapPin, Buildings, CheckCircle } from '@phosphor-icons/react'
+import { company, contacts } from '@/data/site'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { Reveal } from '@/components/shared/Reveal'
 import { Input } from '@/components/ui/Input'
@@ -10,10 +10,9 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
 
 const details = [
-  { icon: Phone, label: 'Telefon', value: company.phone, href: company.phoneHref },
+  { icon: Buildings, label: 'Kancelář (pevná linka)', value: company.office, href: company.officeHref },
   { icon: EnvelopeSimple, label: 'E-mail', value: company.email, href: `mailto:${company.email}` },
   { icon: MapPin, label: 'Sídlo', value: `${company.street}, ${company.city}` },
-  { icon: Clock, label: 'Provozní doba', value: company.hours },
 ] as const
 
 export function Contact() {
@@ -46,11 +45,33 @@ export function Contact() {
             <SectionTitle
               eyebrow="Kontakt"
               title="Pojďme probrat váš projekt"
-              description="Napište nebo zavolejte. Ozveme se do druhého dne, domluvíme prohlídku a připravíme nezávaznou cenovou nabídku."
+              description="Potřebujete kvalitní instalatérské služby v oblasti plynových, vodovodních, kanalizačních nebo topenářských prací? Obraťte se na nás, ozveme se a připravíme nezávaznou nabídku."
             />
           </Reveal>
 
-          <dl className="mt-9 grid gap-4 sm:grid-cols-2">
+          {/* Call a person directly */}
+          <ul className="mt-9 grid gap-4 sm:grid-cols-2">
+            {contacts.map((c, i) => (
+              <Reveal key={c.phoneHref} delay={i * 0.06}>
+                <li>
+                  <a
+                    href={c.phoneHref}
+                    className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-brand/40"
+                  >
+                    <span className="font-display text-lg font-semibold text-ink">{c.name}</span>
+                    {c.role && <span className="text-xs text-muted">{c.role}</span>}
+                    <span className="mt-3 flex items-center gap-2 font-medium text-brand">
+                      <Phone weight="fill" className="size-4 text-accent" aria-hidden />
+                      {c.phone}
+                    </span>
+                  </a>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+
+          {/* Secondary details */}
+          <dl className="mt-4 grid gap-4 sm:grid-cols-3">
             {details.map((d, i) => {
               const Icon = d.icon
               const body = (
@@ -59,7 +80,7 @@ export function Contact() {
                     <Icon weight="fill" className="size-4 text-accent" aria-hidden />
                     {d.label}
                   </dt>
-                  <dd className="mt-1.5 font-medium text-ink">{d.value}</dd>
+                  <dd className="mt-1.5 text-sm font-medium text-ink">{d.value}</dd>
                 </>
               )
               return (
@@ -67,12 +88,12 @@ export function Contact() {
                   {'href' in d && d.href ? (
                     <a
                       href={d.href}
-                      className="block rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-brand/40"
+                      className="block h-full rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-brand/40"
                     >
                       {body}
                     </a>
                   ) : (
-                    <div className="rounded-2xl border border-line bg-surface p-5">{body}</div>
+                    <div className="h-full rounded-2xl border border-line bg-surface p-5">{body}</div>
                   )}
                 </Reveal>
               )

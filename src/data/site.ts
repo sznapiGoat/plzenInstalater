@@ -15,16 +15,26 @@ import {
 
 export const company = {
   name: 'Plzeňské Instalace',
+  legalName: 'Plzeňské Instalace s.r.o.',
   slogan: 'Kvalitní instalace pro váš komfort',
   region: 'Plzeň a okolí',
-  phone: '+420 605 218 470',
-  phoneHref: 'tel:+420605218470',
-  email: 'info@plzenske-instalace.cz',
-  ico: '08471596',
-  street: 'Železniční 12',
-  city: '301 00 Plzeň',
-  hours: 'Po–Pá 7:00–17:00',
+  // Real contact data provided by the company.
+  phone: '+420 737 239 759',
+  phoneHref: 'tel:+420737239759',
+  office: '+420 377 441 356',
+  officeHref: 'tel:+420377441356',
+  email: 'plzenskeinstalacesro@seznam.cz',
+  web: 'www.plzenskeinstalace.cz',
+  street: 'Samaritská 165/1',
+  city: '301 00 Plzeň-Doudlevce',
+  hours: 'Nonstop pohotovost plyn',
 } as const
+
+/** People to call directly. */
+export const contacts: { name: string; role?: string; phone: string; phoneHref: string }[] = [
+  { name: 'Petr Lenc', role: 'Jednatel', phone: '+420 737 239 761', phoneHref: 'tel:+420737239761' },
+  { name: 'Marek Hrůza', phone: '+420 737 239 759', phoneHref: 'tel:+420737239759' },
+]
 
 /* ------------------------------------------------------------------ */
 /*  Navigation                                                         */
@@ -166,25 +176,34 @@ export const processSteps = [
 ] as const
 
 /* ------------------------------------------------------------------ */
-/*  Projects / gallery (placeholder photography via picsum seeds)      */
+/*  Key imagery (real company photos in /public/photos)                */
 /* ------------------------------------------------------------------ */
 
-export interface Project {
-  title: string
+export const heroImage = '/photos/work-12.jpg' // dokončený dům s dlažbou + vůz firmy
+export const aboutImage = '/photos/work-06.jpg' // Volvo nosič s rypadlem JCB
+
+/* ------------------------------------------------------------------ */
+/*  Gallery — curated real photos with honest category tags            */
+/* ------------------------------------------------------------------ */
+
+export interface GalleryItem {
+  src: string
+  alt: string
   tag: string
-  /** picsum seed — swap for real photos later. */
-  seed: string
-  /** Tile span on the desktop masonry grid. */
-  span: 'tall' | 'wide' | 'normal'
+  /** Feature tile spans two columns on desktop. */
+  featured?: boolean
 }
 
-export const projects: Project[] = [
-  { title: 'Rozvody vody, novostavba', tag: 'Voda', seed: 'plumbing-copper-pipes', span: 'tall' },
-  { title: 'Plynová přípojka RD', tag: 'Plyn', seed: 'gas-installation-boiler', span: 'normal' },
-  { title: 'Výkop pro přípojky', tag: 'Zemní práce', seed: 'excavator-trench-dig', span: 'wide' },
-  { title: 'Podlahové topení', tag: 'Topení', seed: 'underfloor-heating-pipes', span: 'normal' },
-  { title: 'Příjezdová dlažba', tag: 'Dlažba', seed: 'paving-blocks-driveway', span: 'normal' },
-  { title: 'Kotelna na klíč', tag: 'Topení', seed: 'boiler-room-heating', span: 'tall' },
+export const gallery: GalleryItem[] = [
+  { src: '/photos/work-11.jpg', alt: 'Dokončený rodinný dům s vydlážděným dvorem', tag: 'Realizace', featured: true },
+  { src: '/photos/work-07.jpg', alt: 'Volvo nosič kontejnerů s rypadlem JCB', tag: 'Technika' },
+  { src: '/photos/work-02.jpg', alt: 'Servisní dodávka Pohotovost plyn', tag: 'Pohotovost' },
+  { src: '/photos/work-13.jpg', alt: 'Cihlový rodinný dům s kamennou podezdívkou', tag: 'Realizace' },
+  { src: '/photos/work-10.jpg', alt: 'Naložené rypadlo při přepravě na stavbu', tag: 'Zemní práce' },
+  { src: '/photos/work-03.jpg', alt: 'Vůz s nabídkou rekonstrukce bytových jader', tag: 'Rekonstrukce' },
+  { src: '/photos/work-14.jpg', alt: 'Dům s novou kamennou zdí a zpevněnou plochou', tag: 'Realizace' },
+  { src: '/photos/work-09.jpg', alt: 'Detail rypadla Volvo ECR28 na nosiči', tag: 'Technika' },
+  { src: '/photos/work-08.jpg', alt: 'Volvo nákladní vůz s rypadlem a servisní dodávka', tag: 'Technika' },
 ]
 
 /* ------------------------------------------------------------------ */

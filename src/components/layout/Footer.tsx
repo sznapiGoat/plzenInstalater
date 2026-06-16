@@ -1,5 +1,5 @@
-import { Drop, Phone, EnvelopeSimple, MapPin } from '@phosphor-icons/react'
-import { company, navLinks, services } from '@/data/site'
+import { Drop, Phone, Buildings, EnvelopeSimple, MapPin } from '@phosphor-icons/react'
+import { company, contacts, navLinks, services } from '@/data/site'
 
 export function Footer() {
   return (
@@ -43,13 +43,28 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-ink">Kontakt</h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm text-ink-soft">
+              {contacts.map((c) => (
+                <li key={c.phoneHref}>
+                  <a
+                    href={c.phoneHref}
+                    className="flex items-center gap-2.5 transition-colors hover:text-brand"
+                  >
+                    <Phone weight="fill" className="size-4 text-accent" aria-hidden />
+                    <span>
+                      {c.phone}
+                      <span className="text-muted"> · {c.name}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
-                  href={company.phoneHref}
+                  href={company.officeHref}
                   className="flex items-center gap-2.5 transition-colors hover:text-brand"
                 >
-                  <Phone weight="fill" className="size-4 text-accent" aria-hidden />
-                  {company.phone}
+                  <Buildings weight="fill" className="size-4 text-accent" aria-hidden />
+                  {company.office}
+                  <span className="text-muted">· kancelář</span>
                 </a>
               </li>
               <li>
@@ -71,7 +86,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center">
           <p>
-            © {new Date().getFullYear()} {company.name}. IČO {company.ico}.
+            © {new Date().getFullYear()} {company.legalName} · {company.web}
           </p>
           <p className="text-muted/80">
             {services.length} oborů řemesla pod jednou střechou.

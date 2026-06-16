@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { MapPin, ShieldCheck } from '@phosphor-icons/react'
-import { company } from '@/data/site'
+import { company, heroImage } from '@/data/site'
 import { CTAButton } from '@/components/shared/CTAButton'
 
 export function Hero() {
@@ -76,9 +76,9 @@ export function Hero() {
         >
           <div className="relative overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_60px_-30px_rgba(15,23,42,0.35)]">
             <img
-              src="https://picsum.photos/seed/plumber-copper-pipework/960/1120"
-              alt="Instalatér při montáži měděných rozvodů"
-              className="h-[28rem] w-full object-cover lg:h-[34rem]"
+              src={heroImage}
+              alt="Dokončený rodinný dům s novou zámkovou dlažbou od Plzeňských Instalací"
+              className="aspect-[5/4] w-full object-cover sm:aspect-[16/11]"
               loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand/25 to-transparent" aria-hidden />

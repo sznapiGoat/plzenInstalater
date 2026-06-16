@@ -1,4 +1,4 @@
-import { stats, aboutFeatures } from '@/data/site'
+import { stats, aboutFeatures, aboutImage } from '@/data/site'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { FeatureList } from '@/components/shared/FeatureList'
 import { Reveal } from '@/components/shared/Reveal'
@@ -12,9 +12,9 @@ export function About() {
           <div className="relative">
             <div className="overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)]">
               <img
-                src="https://picsum.photos/seed/heating-system-workshop/1040/1000"
-                alt="Detail montáže topného systému v kotelně"
-                className="h-[24rem] w-full object-cover lg:h-[30rem]"
+                src={aboutImage}
+                alt="Vlastní technika firmy — Volvo nosič s rypadlem JCB"
+                className="aspect-[4/3] w-full object-cover lg:aspect-[5/4]"
                 loading="lazy"
               />
             </div>
