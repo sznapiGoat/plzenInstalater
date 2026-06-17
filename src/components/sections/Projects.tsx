@@ -11,7 +11,7 @@ export function Projects() {
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <SectionTitle
               title="Vybrané realizace"
-              description="Vlastní vozový park, technika JCB a Volvo a hotové stavby v okolí Plzně. Fotografie z reálných zakázek."
+              description="Vlastní technika JCB a Volvo a hotové stavby z okolí Plzně, doplněné ilustračními fotografiemi jednotlivých řemesel."
               className="max-w-xl"
             />
             <CTAButton href="#kontakt" variant="outline" withArrow className="shrink-0">
@@ -40,6 +40,8 @@ export function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-4 text-xs text-muted">Ilustrační fotografie řemesel: Pexels.</p>
 
         {/* Testimonial — full-width quote band (distinct layout family) */}
         <Reveal>

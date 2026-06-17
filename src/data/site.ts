@@ -194,16 +194,19 @@ export interface GalleryItem {
   featured?: boolean
 }
 
+// Each tile = a distinct service. Real company photos for machinery / finished
+// builds / fleet; category-matched Pexels stock for the indoor trades the
+// company doesn't photograph. No image is repeated.
 export const gallery: GalleryItem[] = [
-  { src: '/photos/work-11.jpg', alt: 'Dokončený rodinný dům s vydlážděným dvorem', tag: 'Realizace', featured: true },
-  { src: '/photos/work-07.jpg', alt: 'Volvo nosič kontejnerů s rypadlem JCB', tag: 'Technika' },
-  { src: '/photos/work-02.jpg', alt: 'Servisní dodávka Pohotovost plyn', tag: 'Pohotovost' },
-  { src: '/photos/work-13.jpg', alt: 'Cihlový rodinný dům s kamennou podezdívkou', tag: 'Realizace' },
-  { src: '/photos/work-10.jpg', alt: 'Naložené rypadlo při přepravě na stavbu', tag: 'Zemní práce' },
-  { src: '/photos/work-03.jpg', alt: 'Vůz s nabídkou rekonstrukce bytových jader', tag: 'Rekonstrukce' },
-  { src: '/photos/work-14.jpg', alt: 'Dům s novou kamennou zdí a zpevněnou plochou', tag: 'Realizace' },
-  { src: '/photos/work-09.jpg', alt: 'Detail rypadla Volvo ECR28 na nosiči', tag: 'Technika' },
-  { src: '/photos/work-08.jpg', alt: 'Volvo nákladní vůz s rypadlem a servisní dodávka', tag: 'Technika' },
+  { src: '/photos/work-11.jpg', alt: 'Dokončený rodinný dům s novou zámkovou dlažbou', tag: 'Zámková dlažba', featured: true },
+  { src: '/photos/voda-detail.jpg', alt: 'Montáž vodovodního potrubí a ventilů', tag: 'Vodovodní instalace' },
+  { src: '/photos/work-08.jpg', alt: 'Volvo nosič s rypadlem JCB a servisní vůz', tag: 'Technika JCB & Volvo' },
+  { src: '/photos/plyn-detail.jpg', alt: 'Plynové potrubí s plynoměrem na fasádě', tag: 'Plynové instalace' },
+  { src: '/photos/work-10.jpg', alt: 'Přeprava rypadla na stavbu vlastní technikou', tag: 'Zemní práce' },
+  { src: '/photos/topeni-detail.jpg', alt: 'Technická místnost s kotlem a akumulačními nádržemi', tag: 'Topení a vytápění' },
+  { src: '/photos/work-13.jpg', alt: 'Dokončená stavba rodinného domu s kamennou zdí', tag: 'Stavební práce' },
+  { src: '/photos/kanal-detail.jpg', alt: 'Kanalizační vpusť a odvodnění zpevněné plochy', tag: 'Kanalizace' },
+  { src: '/photos/work-02.jpg', alt: 'Servisní dodávka Pohotovost plyn', tag: 'Pohotovost plyn' },
 ]
 
 /* ------------------------------------------------------------------ */
