@@ -2,6 +2,7 @@ import { stats, aboutFeatures, aboutImage } from '@/data/site'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { FeatureList } from '@/components/shared/FeatureList'
 import { Reveal } from '@/components/shared/Reveal'
+import { CountUp } from '@/components/shared/CountUp'
 
 export function About() {
   return (
@@ -13,29 +14,33 @@ export function About() {
             <div className="overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)]">
               <img
                 src={aboutImage}
-                alt="Vlastní technika firmy — Volvo nosič s rypadlem JCB"
+                alt="Vlastní technika firmy, Volvo nosič s rypadlem JCB"
                 className="aspect-[4/3] w-full object-cover lg:aspect-[5/4]"
                 loading="lazy"
               />
             </div>
 
             <dl className="mt-5 grid grid-cols-3 gap-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-line bg-surface px-4 py-5 text-center"
-                >
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd>
-                    <span className="block font-display text-2xl font-semibold text-brand md:text-3xl">
-                      {stat.value}
-                    </span>
-                    <span className="mt-1 block text-xs leading-tight text-muted">
-                      {stat.label}
-                    </span>
-                  </dd>
-                </div>
-              ))}
+              {stats.map((stat) => {
+                const num = parseInt(stat.value, 10)
+                const suffix = stat.value.replace(/[0-9]/g, '')
+                return (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl border border-line bg-surface px-4 py-5 text-center"
+                  >
+                    <dt className="sr-only">{stat.label}</dt>
+                    <dd>
+                      <span className="block font-display text-2xl font-semibold text-brand md:text-3xl">
+                        <CountUp value={num} suffix={suffix} />
+                      </span>
+                      <span className="mt-1 block text-xs leading-tight text-muted">
+                        {stat.label}
+                      </span>
+                    </dd>
+                  </div>
+                )
+              })}
             </dl>
           </div>
         </Reveal>

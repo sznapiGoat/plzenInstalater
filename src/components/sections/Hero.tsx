@@ -46,7 +46,16 @@ export function Hero() {
           >
             Voda, plyn a topení.{' '}
             <span className="text-brand">Hotovo</span>{' '}
-            <span className="text-accent">napoprvé.</span>
+            <span className="relative whitespace-nowrap text-accent">
+              napoprvé.
+              <motion.span
+                aria-hidden
+                className="absolute -bottom-1 left-0 h-[3px] w-full origin-left rounded-full bg-accent"
+                initial={reduce ? false : { scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              />
+            </span>
           </motion.h1>
 
           <motion.p
@@ -85,7 +94,11 @@ export function Hero() {
           </div>
 
           {/* One floating info card — real info, not decoration */}
-          <div className="absolute -bottom-5 -left-3 flex items-center gap-3 rounded-2xl border border-line bg-surface/95 px-4 py-3 shadow-lg backdrop-blur sm:-left-6">
+          <motion.div
+            className="absolute -bottom-5 -left-3 flex items-center gap-3 rounded-2xl border border-line bg-surface/95 px-4 py-3 shadow-lg backdrop-blur sm:-left-6"
+            animate={reduce ? undefined : { y: [0, -9, 0] }}
+            transition={{ duration: 4.5, ease: 'easeInOut', repeat: Infinity }}
+          >
             <span className="flex size-10 items-center justify-center rounded-xl bg-brand-50 text-brand">
               <ShieldCheck weight="duotone" className="size-6" aria-hidden />
             </span>
@@ -93,7 +106,7 @@ export function Hero() {
               <p className="font-display text-xl font-semibold text-ink">15+ let</p>
               <p className="text-xs text-muted">zkušeností v oboru</p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

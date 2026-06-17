@@ -37,7 +37,7 @@ export function CTAButton({
   return (
     <a
       className={cn(
-        'group inline-flex items-center justify-center gap-2 rounded-full font-medium',
+        'group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium',
         'whitespace-nowrap transition-all duration-200 ease-out active:translate-y-px',
         variants[variant],
         sizes[size],
@@ -45,14 +45,21 @@ export function CTAButton({
       )}
       {...props}
     >
-      {children}
-      {withArrow && (
-        <ArrowRight
-          weight="bold"
-          className="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
-          aria-hidden
-        />
-      )}
+      {/* Sheen sweep on hover */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 -left-full w-1/2 -skew-x-12 bg-white/25 blur-md transition-transform duration-700 ease-out group-hover:translate-x-[300%] motion-reduce:hidden"
+      />
+      <span className="relative inline-flex items-center gap-2">
+        {children}
+        {withArrow && (
+          <ArrowRight
+            weight="bold"
+            className="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        )}
+      </span>
     </a>
   )
 }

@@ -101,7 +101,7 @@ export const services: Service[] = [
   },
   {
     id: 'zemni',
-    title: 'Zemní práce — JCB & Volvo',
+    title: 'Zemní práce s JCB & Volvo',
     description:
       'Výkopy a terénní úpravy vlastní technikou JCB a Volvo.',
     icon: Truck,

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { Phone, EnvelopeSimple, MapPin, Buildings, CheckCircle } from '@phosphor-icons/react'
+import { Phone, EnvelopeSimple, MapPin, Buildings, CheckCircle, ArrowRight } from '@phosphor-icons/react'
 import { company, contacts } from '@/data/site'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { Reveal } from '@/components/shared/Reveal'
@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/Button'
 
 const details = [
   { icon: Buildings, label: 'Kancelář (pevná linka)', value: company.office, href: company.officeHref },
-  { icon: EnvelopeSimple, label: 'E-mail', value: company.email, href: `mailto:${company.email}` },
   { icon: MapPin, label: 'Sídlo', value: `${company.street}, ${company.city}` },
 ] as const
 
@@ -70,8 +69,31 @@ export function Contact() {
             ))}
           </ul>
 
+          {/* E-mail — prominent, full width so the long address never crowds */}
+          <Reveal delay={0.12}>
+            <a
+              href={`mailto:${company.email}`}
+              className="group mt-4 flex items-center justify-between gap-4 rounded-2xl border border-brand/25 bg-brand-50/70 p-5 transition-colors hover:border-brand/50"
+            >
+              <span className="min-w-0">
+                <span className="flex items-center gap-2 text-xs font-medium text-muted">
+                  <EnvelopeSimple weight="fill" className="size-4 text-accent" aria-hidden />
+                  Napište nám e-mail
+                </span>
+                <span className="mt-1.5 block truncate font-display text-base font-semibold text-brand sm:text-lg">
+                  {company.email}
+                </span>
+              </span>
+              <ArrowRight
+                weight="bold"
+                className="size-5 shrink-0 text-brand transition-transform duration-200 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </a>
+          </Reveal>
+
           {/* Secondary details */}
-          <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
             {details.map((d, i) => {
               const Icon = d.icon
               const body = (

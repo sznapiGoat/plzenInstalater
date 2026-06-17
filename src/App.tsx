@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
+import { ServiceMarquee } from '@/components/sections/ServiceMarquee'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { About } from '@/components/sections/About'
 import { Process } from '@/components/sections/Process'
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <ServiceMarquee />
         <ServicesGrid />
         <About />
         <Process />
